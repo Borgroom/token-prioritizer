@@ -3,6 +3,7 @@ interface Issue {
   number:number;
   title:string;
   blockers:number[];
+  size:number;
 }
 
 module.exports = async function getIssues ({ octokit, owner, repo }): Promise<Issues> {
