@@ -1,27 +1,21 @@
-/**
-type Issues = { [id:number]: Issue };
-interface Issue {
-  number:number;
-  title:string;
-  blockers:number[];
-}
-type WeightedIssues = { [id:number]: WeightedIssue };
-interface WeightedIssue extends Issue {
-  weight:number; // from 0 to 100
-}
-type timeframe = number; // quantity of "story points"
-**/
+type Orders = Order[];
+type Order = Track[];
+type Track = WeightedIssue[];
 
-module.exports = function proposeOrderFor ({ issues, timeframe }) {
+module.exports = function proposeOrderFor ({ issues, timeframe, tracks }: {
+  issues: WeightedIssues,
+  timeframe: number, // Quantity of "story point" time to try to optimize within.
+  tracks: number, // Number of parallel work streams
+}): Orders {
 
   const unblocked = {};
 
   for(const key in issues) {
     const issue = issues[key];
-    if (issue.length === 0) {
+    if (issue.blockers.length === 0) {
       unblocked[issue.number] = issue;
     }
   }
 
-  return 'got this far'
+  return [];
 }

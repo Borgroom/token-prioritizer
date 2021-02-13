@@ -1,19 +1,11 @@
-/**
-type Issues = { [id:number]: Issue };
-interface Issue {
-  number:number;
-  title:string;
-  blockers:number[];
-}
 type WeightedIssues = { [id:number]: WeightedIssue };
 interface WeightedIssue extends Issue {
   weight:number; // from 0 to 100
 }
 type timeframe = number; // quantity of "story points"
-**/
 
-module.exports = async function (issues) {
-  const weighted = {};
+module.exports = async function (issues: Issues): Promise<WeightedIssues> {
+  const weighted: WeightedIssues = {};
 
   //TODO: Actually retrieve weight from a meaningful source.
   for(const key in issues) {

@@ -1,4 +1,11 @@
-module.exports = async function getIssues ({ octokit, owner, repo }) {
+type Issues = { [id:number]: Issue };
+interface Issue {
+  number:number;
+  title:string;
+  blockers:number[];
+}
+
+module.exports = async function getIssues ({ octokit, owner, repo }): Promise<Issues> {
   const issues = {};
 
   let finalPage = false;
