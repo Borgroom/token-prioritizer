@@ -1,13 +1,36 @@
 {
-  "name": "token-prioritizer-server",
+  "name": "@metamask/module-template",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
   },
-  "author": "",
-  "license": "ISC",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.es.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "prepublishOnly": "npm run build",
+    "lint": "printf '%s\n' 'No lint command yet'",
+    "build": "rollup --config"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^15.0.0",
+    "@rollup/plugin-node-resolve": "^9.0.0",
+    "@types/jest": "^26.0.13",
+    "jest": "^26.4.2",
+    "rollup": "^2.26.9",
+    "rollup-plugin-typescript2": "^0.27.2",
+    "ts-jest": "^26.3.0",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.2"
+  },
   "dependencies": {
     "@octokit/rest": "^18.1.1"
   }
